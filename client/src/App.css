@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+
+
+
+
+.App{
+  
+  min-height: 100vh;
+  background-image: radial-gradient( circle 341px at 10% 20%,  rgba(132,94,194,1) 0%, rgba(196,243,251,1) 90% );
+  
+}

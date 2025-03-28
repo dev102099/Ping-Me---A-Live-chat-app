@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import MainContainer from "./Components/MainContainer";
-import Recents from "./Components/Recents";
+
 import Searchcontainer from "./Components/Searchcontainer";
+import { Routes, Route } from "react-router-dom";
+import Welcome from "./Components/Welcome";
+import Chat from "./Components/Chat";
+import ChatArea from "./Components/ChatArea";
+import Message from "./Components/Message";
 
 function App() {
   useEffect(() => {
@@ -24,14 +29,35 @@ function App() {
   }, []);
 
   return (
-    <div className="App flex flex-col ">
-      <link id="favicon" rel="icon" type="image/svg+xml" href="/Group 2.svg" />
-      <Recents></Recents>
-      <div className="flex flex-row ">
-        <Searchcontainer></Searchcontainer>
-        <MainContainer></MainContainer>
+    <>
+      <div className="App flex overflow-hidden  ">
+        <link
+          id="favicon"
+          rel="icon"
+          type="image/svg+xml"
+          href="/Group 2.svg"
+        />
+
+        <div className=" h-screen flex-col flex md:flex-row  w-screen root-container ">
+          <Searchcontainer></Searchcontainer>
+          <Routes>
+            <Route path="/" element={<MainContainer />}>
+              <Route path="welcome" element={<Welcome />} />
+              <Route
+                path="chat"
+                element={
+                  <>
+                    <Chat />
+                    <ChatArea />
+                    <Message />
+                  </>
+                }
+              />
+            </Route>
+          </Routes>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,34 +1,14 @@
 import React from "react";
-import Chat from "./Chat";
+
 import "./Componentcss.css";
-import ChatArea from "./ChatArea";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Message from "./Message";
-import Welcome from "./Welcome";
+
+import { Outlet } from "react-router-dom";
 
 function MainContainer() {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <div className="  ml-10 h-150 w-230 p-5 flex flex-col gap-3  shadow-xl rounded-3xl Main">
-            <Welcome />
-          </div>
-        }
-      />
-      <Route
-        path="chat"
-        element={
-          <div className="  ml-10 h-150 w-230 p-5 flex flex-col gap-3  shadow-xl rounded-3xl Main">
-            <Chat />
-            <ChatArea></ChatArea>
-            <Message></Message>
-          </div>
-        }
-      />
-    </Routes>
+    <div className="  shrink bg-white ml-5 w-screen  mt-5 mb-5 p-5 flex-1 flex-col gap-3  shadow-xl rounded-tl-3xl rounded-bl-3xl Main">
+      <Outlet />
+    </div>
   );
 }
 

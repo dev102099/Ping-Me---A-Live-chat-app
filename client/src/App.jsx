@@ -19,8 +19,8 @@ function App() {
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
-    console.log(currentUser);
-    if (currentUser === "" || currentUser == null || currentUser.length === 0) {
+    const cookie = Cookies.get("access_token");
+    if (!cookie) {
       navigate("/");
     }
 

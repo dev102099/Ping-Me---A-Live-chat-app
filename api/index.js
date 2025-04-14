@@ -23,7 +23,12 @@ io.on("connection", (socket) => {
   });
 });
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(
+  cors({
+    origin: "https://ping-me-a-live-chat-app.onrender.com",
+    credentials: true,
+  })
+);
 dotenv.config();
 app.use(cookieParser());
 app.use(express.json());

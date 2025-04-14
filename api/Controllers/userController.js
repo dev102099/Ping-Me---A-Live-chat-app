@@ -25,9 +25,10 @@ const handleLog = async (req, res, next) => {
       .status(200)
       .cookie("access_token", token, {
         httpOnly: true,
-        secure: true, // Only set cookies on HTTPS (Required on Render)
-        sameSite: "none",
+        secure: true,
+        sameSite: "None",
         maxAge: 7 * 24 * 60 * 60 * 1000,
+        path: "/",
       })
       .json({ restData });
   } catch (error) {

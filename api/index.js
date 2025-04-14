@@ -10,6 +10,15 @@ const { Server } = require("socket.io");
 const { init } = require("./socket");
 
 const app = express();
+app.use(
+  cors({
+    origin: "https://ping-me-a-live-chat-app.onrender.com",
+    credentials: true,
+  })
+);
+dotenv.config();
+app.use(cookieParser());
+app.use(express.json());
 const server = createServer(app);
 const io = init(server);
 io.on("connection", (socket) => {
@@ -23,15 +32,6 @@ io.on("connection", (socket) => {
   });
 });
 
-app.use(
-  cors({
-    origin: "https://ping-me-a-live-chat-app.onrender.com",
-    credentials: true,
-  })
-);
-dotenv.config();
-app.use(cookieParser());
-app.use(express.json());
 const PORT = process.env.PORT || 3000;
 const URL = process.env.URL;
 

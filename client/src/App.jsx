@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     console.log(currentUser);
-    if (currentUser) {
+    if (currentUser === "" || currentUser == null || currentUser.length === 0) {
       navigate("/");
     }
 

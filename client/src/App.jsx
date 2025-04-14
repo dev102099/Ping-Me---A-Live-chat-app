@@ -16,13 +16,20 @@ import socket from "./socket";
 
 function App() {
   const navigate = useNavigate();
+  const SERVER = import.meta.env.VITE_SERVER;
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
-    const cookie = Cookies.get("access_token");
-    if (!cookie) {
-      navigate("/");
-    }
+    const validateUser = async () => {
+      const res = await fetch(`${SERVER}/user/validate-user`, {
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        navigate("/");
+      }
+    };
+    validateUser();
 
     const favicon = document.getElementById("favicon");
 

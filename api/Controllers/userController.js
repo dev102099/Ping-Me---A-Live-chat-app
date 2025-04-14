@@ -176,6 +176,15 @@ const handleUpdate = async (req, res, next) => {
   }
 };
 
+const validate = async (req, res) => {
+  try {
+    const token = req.cookies.access_token;
+    if (!token) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+  } catch (error) {}
+};
+
 module.exports = {
   handleLog,
   handleSign,
@@ -184,4 +193,5 @@ module.exports = {
   getUser,
   handleLogout,
   handleUpdate,
+  validate,
 };

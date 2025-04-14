@@ -20,16 +20,10 @@ function App() {
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
-    const validateUser = async () => {
-      const res = await fetch(`${SERVER}/user/validate-user`, {
-        credentials: "include",
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        navigate("/");
-      }
-    };
-    validateUser();
+    const token = Cookies.get("access_token");
+    if (!token) {
+      navigate("/");
+    }
 
     const favicon = document.getElementById("favicon");
 

@@ -144,7 +144,12 @@ const getUser = async (req, res, next) => {
 const handleLogout = async (req, res, next) => {
   try {
     res
-      .clearCookie("access_token")
+      .clearCookie("access_token", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        path: "/",
+      })
       .status(200)
       .json({ message: "Logged out." });
   } catch (error) {

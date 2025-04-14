@@ -19,8 +19,7 @@ function App() {
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
-    const cookie = Cookies.get("access_token");
-    if (!cookie) {
+    if (!currentUser) {
       navigate("/");
     }
 

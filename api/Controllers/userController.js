@@ -182,13 +182,15 @@ const handleUpdate = async (req, res, next) => {
   }
 };
 
-const validate = async (req, res) => {
+const validate = async (req, res, next) => {
   try {
     const token = req.cookies.access_token;
     if (!token) {
       return res.status(401).json({ success: false, message: "Unauthorized" });
     }
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {

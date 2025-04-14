@@ -49,7 +49,7 @@ function App() {
         socket.emit("join-room", currentUser.restData.username);
       });
     }
-  }, []);
+  }, [currentUser]);
 
   return (
     <>

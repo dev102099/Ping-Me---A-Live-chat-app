@@ -21,7 +21,14 @@ const handleLog = async (req, res, next) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     const { password: notNeeded, ...restData } = user._doc;
 
-    return res.status(200).cookie("access_token", token).json({ restData });
+    return res
+      .status(200)
+      .cookie("access_token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+      })
+      .json({ restData });
   } catch (error) {
     next(error);
   }

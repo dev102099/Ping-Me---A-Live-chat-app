@@ -8,7 +8,7 @@ const verifyCookie = async (req, res, next) => {
   if (!JWT_TOKEN) {
     res.status(500).json({ message: "Internal Server Error." });
   }
-  console.log(token);
+  console.log("cookies:" + token);
   if (!token) {
     res.status(401).json({ message: "Unauthorized." });
   }

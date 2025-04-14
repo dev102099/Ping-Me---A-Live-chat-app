@@ -19,7 +19,8 @@ function App() {
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (!currentUser) {
+    console.log(currentUser);
+    if (currentUser) {
       navigate("/");
     }
 

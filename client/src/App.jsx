@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (currentUser != null || currentUser != {}) {
+    if (currentUser) {
       socket.connect();
 
       socket.on("connect", () => {

@@ -21,9 +21,11 @@ function App() {
 
   useEffect(() => {
     const token = Cookies.get("access_token");
-    if (!token) {
-      navigate("/");
-    }
+    setTimeout(() => {
+      if (!token) {
+        navigate("/");
+      }
+    }, 300);
 
     const favicon = document.getElementById("favicon");
 

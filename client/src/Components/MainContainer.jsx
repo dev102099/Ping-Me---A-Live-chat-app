@@ -1,14 +1,30 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import "./Componentcss.css";
 
 import { Outlet } from "react-router-dom";
+import Spinner from "./Spinner";
 
 function MainContainer() {
+  const { lightTheme, isLoading } = useSelector((state) => state.user);
+  const bgColor = lightTheme ? "bg-white" : "bg-zinc-800";
   return (
-    <div className="  shrink bg-white ml-5 w-screen  mt-5 mb-5 p-5 flex-1 flex-col gap-3  shadow-xl rounded-tl-3xl rounded-bl-3xl Main">
-      <Outlet />
-    </div>
+    <>
+      {isLoading ? (
+        <div
+          className={`shrink ${bgColor} ml-5 w-screen  mt-5 mb-5 p-5 flex items-center justify-center flex-col gap-3  shadow-xl rounded-tl-3xl rounded-bl-3xl Main`}
+        >
+          <Spinner />
+        </div>
+      ) : (
+        <div
+          className={`shrink ${bgColor} ml-5 w-screen  mt-5 mb-5 p-5 flex flex-col gap-3  shadow-xl rounded-tl-3xl rounded-bl-3xl Main`}
+        >
+          <Outlet />
+        </div>
+      )}
+    </>
   );
 }
 

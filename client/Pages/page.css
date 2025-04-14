@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+
+@theme{
+    --color-grayish:#A52A2A;
+}
+
+.login,.signup{
+    background: #1a1a1a;
+}
+

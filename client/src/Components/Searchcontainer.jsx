@@ -92,7 +92,7 @@ function Searchcontainer() {
   return (
     <div className=" flex flex-col gap-3 w-[100%] md:w-[10%]  md:min-w-[25%] ">
       <div className=" flex justify-center m-6">
-        <img src="Group 2.svg" alt="" className="h-15 w-15" />
+        <img src=".../public/Group 2.svg" alt="" className="h-15 w-15" />
       </div>
 
       <div className="flex flex-row  md:flex-col gap-10 md:gap-3 ">
